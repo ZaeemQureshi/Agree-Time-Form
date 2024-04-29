@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Agritime.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Attendance List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add Attendance</a>
+</p>
+
+<div class="card">
+    <div class="card-header">
+
+        <h3 class="card-title">Employees List</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shift)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeOut)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shift.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOut)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AttendanceId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AttendanceId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AttendanceId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
